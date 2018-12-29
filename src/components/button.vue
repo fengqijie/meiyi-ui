@@ -1,5 +1,8 @@
 <template>
     <button class="m-button">
+        <svg class="m-icon">
+            <use xlink:href="#icon-search"></use>
+        </svg>
         <slot></slot>
     </button>
 </template>
@@ -16,6 +19,11 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+}
+.m-icon {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.2em;
 }
 </style>
 
