@@ -1,11 +1,18 @@
 <template>
     <button class="m-button">
         <svg class="m-icon">
-            <use xlink:href="#icon-search"></use>
+            <use :xlink:href="`#icon-${icon}`"></use>
         </svg>
         <slot></slot>
     </button>
 </template>
+
+<script>
+export default {
+    props: ['icon'],
+}
+</script>
+
 
 <style lang="less" scoped>
 .m-button {

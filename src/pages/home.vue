@@ -1,6 +1,6 @@
 <template>
     <div>
-        <m-button>查询</m-button>
+        <m-button icon="search">查询</m-button>
     </div>
 </template>
 
