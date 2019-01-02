@@ -1,6 +1,7 @@
 <template>
-    <button class="m-button" :class="{[`icon-${iconPosition}`]: true}">
-        <m-icon v-if="icon" class="m-icon" :name="icon"></m-icon>
+    <button class="m-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+        <m-icon v-if="loading" class="m-icon loading" name="loading"></m-icon>
+        <m-icon v-if="icon && !loading" class="m-icon" :name="icon"></m-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -28,7 +29,7 @@ export default {
     },
     components:{
         mIcon
-    }
+    },
 }
 </script>
 
@@ -78,7 +79,7 @@ export default {
         }
     }
     .loading {
-        animation: spin 1s  infinite linear;
+        animation: spin 1.5s  infinite linear;
     }
 }
 </style>
