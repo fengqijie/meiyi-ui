@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import home from '@/pages/home'
 import button from '@/components/button'
 import icon from '@/components/icon'
+import pagination from '@/components/pagination'
 
 Vue.use(Router)
 
@@ -20,6 +21,10 @@ export default new Router({
       path: '/icon',
       name: 'icon',
       component: icon
+    }, {
+      path: '/pagination',
+      name: 'pagination',
+      component: pagination
     }
   ]
 })

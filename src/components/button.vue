@@ -51,6 +51,8 @@ export default {
     justify-content: center;
     align-items: center;
     vertical-align: middle;
+    transition: 0.1s;
+    cursor: pointer;
     &:hover {
         border-color: #ccc;
     }
