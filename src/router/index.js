@@ -4,6 +4,7 @@ import home from '@/pages/home'
 import button from '@/components/button'
 import icon from '@/components/icon'
 import pagination from '@/components/pagination'
+import Input from '@/components/input'
 
 Vue.use(Router)
 
@@ -25,6 +26,10 @@ export default new Router({
       path: '/pagination',
       name: 'pagination',
       component: pagination
+    }, {
+      path: '/input',
+      name: 'Input',
+      component: Input
     }
   ]
 })

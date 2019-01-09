@@ -7,12 +7,14 @@
             <m-button>更多</m-button>
             <m-button icon="right" icon-position="right">下一页</m-button>
         </m-pagination>
+        <m-input></m-input>
     </div>
 </template>
 
 <script>
 import mButton from '@/components/button'
 import mPagination from '@/components/pagination'
+import mInput from '@/components/input'
 
 export default {
     data() {
@@ -22,7 +24,8 @@ export default {
     },
     components: {
         mButton,
-        mPagination
+        mPagination,
+        mInput
     },
     
 }
