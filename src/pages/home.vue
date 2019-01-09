@@ -7,7 +7,7 @@
             <m-button>更多</m-button>
             <m-button icon="right" icon-position="right">下一页</m-button>
         </m-pagination>
-        <m-input></m-input>
+        <m-input value="请输入" error="姓名不能为空"></m-input>
     </div>
 </template>
 
