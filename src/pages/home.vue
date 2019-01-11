@@ -7,7 +7,9 @@
             <m-button>更多</m-button>
             <m-button icon="right" icon-position="right">下一页</m-button>
         </m-pagination>
-        <m-input value="请输入" error="姓名不能为空"></m-input>
+        <m-input value="请输入" v-model="message"></m-input>
+        <p>{{ message }}</p>
+        <button @click="message+=1">js改变input</button>
     </div>
 </template>
 
@@ -19,7 +21,8 @@ import mInput from '@/components/input'
 export default {
     data() {
         return {
-            isLoading: false
+            isLoading: false,
+            message: 'hi'
         }
     },
     components: {
@@ -27,7 +30,7 @@ export default {
         mPagination,
         mInput
     },
-    
+    methods: {},
 }
 </script>
 

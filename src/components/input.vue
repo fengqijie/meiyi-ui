@@ -5,6 +5,8 @@
             :value="value" 
             :disabled="disabled" 
             :readonly="readonly"
+            @change="$emit('change', $event.target.value)"
+            @input="$emit('input', $event.target.value)"
             />
         <template v-if="error">
             <m-icon name="error"></m-icon>
@@ -45,8 +47,8 @@ export default {
 .m-input {
     margin: 20px 0;
     @height: 32px;
-    @border-color: #999;
-    @border-hover-color: #666;
+    @border-color: #e8e8e8;
+    @border-hover-color: #ccc;
     @border-radius: 4px;
     @font-size: 14px;
     display: inline-flex;
