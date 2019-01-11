@@ -10,6 +10,10 @@
         <m-input value="请输入" v-model="message"></m-input>
         <p>{{ message }}</p>
         <button @click="message+=1">js改变input</button>
+        <m-row>
+            <m-col span="2"></m-col>
+            <m-col span="22"></m-col>
+        </m-row>
     </div>
 </template>
 
@@ -17,6 +21,8 @@
 import mButton from '@/components/button'
 import mPagination from '@/components/pagination'
 import mInput from '@/components/input'
+import mRow from '@/components/row'
+import mCol from '@/components/col'
 
 export default {
     data() {
@@ -28,7 +34,9 @@ export default {
     components: {
         mButton,
         mPagination,
-        mInput
+        mInput,
+        mRow,
+        mCol
     },
     methods: {},
 }

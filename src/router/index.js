@@ -5,6 +5,8 @@ import button from '@/components/button'
 import icon from '@/components/icon'
 import pagination from '@/components/pagination'
 import Input from '@/components/input'
+import Row from '@/components/row'
+import Col from '@/components/col'
 
 Vue.use(Router)
 
@@ -30,6 +32,14 @@ export default new Router({
       path: '/input',
       name: 'Input',
       component: Input
+    }, {
+      path: '/row',
+      name: 'Row',
+      component: Row
+    }, {
+      path: '/col',
+      name: 'Col',
+      component: Col
     }
   ]
 })
