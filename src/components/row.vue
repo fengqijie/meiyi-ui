@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="{marginLeft: -gutter/2 + 'px', marginRight: -gutter/2 + 'px'}">
+    <div class="row" :style="rowStyle">
         <slot></slot>
     </div>
 </template>
@@ -11,6 +11,14 @@ export default {
         gutter: {
             type: [Number, String]
         }
+    },
+    computed: {
+        rowStyle() {
+            return {
+                marginLeft: -this.gutter/2 + 'px',
+                marginRight: -this.gutter/2 + 'px',
+            }
+        },
     },
     created() {
         // created 是创建这个组件，但没有放到页面里
