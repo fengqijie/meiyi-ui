@@ -10,7 +10,7 @@
         <m-input value="请输入" v-model="message"></m-input>
         <p>{{ message }}</p>
         <button @click="message+=1">js改变input</button>
-        <m-row gutter="20">
+        <m-row gutter="20" align="center">
             <m-col span="4">左边</m-col>
             <m-col span="18" offset="1">右边</m-col>
         </m-row>
