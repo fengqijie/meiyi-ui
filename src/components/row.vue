@@ -1,8 +1,30 @@
 <template>
-    <div class="row">
+    <div class="row" :style="{marginLeft: -gutter/2 + 'px', marginRight: -gutter/2 + 'px'}">
         <slot></slot>
     </div>
 </template>
+
+<script>
+export default {
+    name: "mRow",
+    props: {
+        gutter: {
+            type: [Number, String]
+        }
+    },
+    created() {
+        // created 是创建这个组件，但没有放到页面里
+        // mounted 是挂载到页面上
+    },
+    mounted() {
+        console.log(this.$children)
+        this.$children.forEach((vm) => {
+            vm.gutter = this.gutter
+        })
+    }
+}
+</script>
+
 
 <style lang="less" scoped>
 .row {

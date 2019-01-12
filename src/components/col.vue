@@ -1,6 +1,12 @@
 <template>
-    <div class="col" :class="[`col-${span}`]">
-        <slot></slot>
+    <div 
+        class="col" 
+        :class="[`col-${span}`, offset && `offset-${offset}`]"
+        :style="{paddingLeft: gutter/2 + 'px', paddingRight: gutter/2 + 'px'}"
+        >
+        <div style="border: 1px solid yellow">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
@@ -10,8 +16,16 @@ export default {
     props: {
         span: {
             type: [Number, String]
+        },
+        offset: {
+            type: [Number, String]
         }
     },
+    data() {
+        return {
+            gutter: 0
+        }
+    }
 }
 </script>
 
@@ -23,12 +37,14 @@ export default {
     .col-@{i} {
         width: (@i * 100% / @n);
     }
+    .offset-@{i} {
+        margin-left: (@i * 100% / @n);
+    }
     .generate-columns(@n, (@i + 1));
 }
 .col {
     height: 100px;
     background: pink;
-    // width: 50%;
     border: 1px solid red;
 }
 </style>
