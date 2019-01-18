@@ -7,6 +7,9 @@ import pagination from '@/components/pagination'
 import Input from '@/components/input'
 import Row from '@/components/row'
 import Col from '@/components/col'
+import Toast from '@/components/Toast'
+
+
 
 Vue.use(Router)
 
@@ -40,6 +43,10 @@ export default new Router({
       path: '/col',
       name: 'Col',
       component: Col
+    }, {
+      path: '/toast',
+      name: 'Toast',
+      component: Toast
     }
   ]
 })

@@ -9,11 +9,13 @@
         </m-pagination>
         <m-input value="请输入" v-model="message"></m-input>
         <p>{{ message }}</p>
-        <button @click="message+=1">js改变input</button>
+        <button style="margin-bottom: 30px;" @click="message+=1">js改变input</button>
         <m-row gutter="20" align="center">
             <m-col span="4">左边</m-col>
             <m-col span="18" offset="1">右边</m-col>
         </m-row>
+        <button @click="showToast">点击弹出toast</button>
+        <m-toast></m-toast>
     </div>
 </template>
 
@@ -23,6 +25,7 @@ import mPagination from '@/components/pagination'
 import mInput from '@/components/input'
 import mRow from '@/components/row'
 import mCol from '@/components/col'
+import mToast from '@/components/toast'
 
 export default {
     data() {
@@ -36,9 +39,15 @@ export default {
         mPagination,
         mInput,
         mRow,
-        mCol
+        mCol,
+        mToast
     },
-    methods: {},
+    created() {},
+    methods: {
+        showToast() {
+            this.$toast('我是toast')
+        }
+    },
 }
 </script>
 
