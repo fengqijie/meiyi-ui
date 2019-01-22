@@ -14,8 +14,7 @@
             <m-col span="4">左边</m-col>
             <m-col span="18" offset="1">右边</m-col>
         </m-row>
-        <button @click="showToast">点击弹出toast</button>
-        <m-toast></m-toast>
+        <button @click="showToast" style="margin: 30px 0;">点击弹出toast</button>
     </div>
 </template>
 
@@ -25,7 +24,6 @@ import mPagination from '@/components/pagination'
 import mInput from '@/components/input'
 import mRow from '@/components/row'
 import mCol from '@/components/col'
-import mToast from '@/components/toast'
 
 export default {
     data() {
@@ -40,12 +38,18 @@ export default {
         mInput,
         mRow,
         mCol,
-        mToast
     },
-    created() {},
     methods: {
         showToast() {
-            this.$toast('我是toast')
+            this.$toast(`我是message${parseInt(Math.random() * 100)}`, {
+                position: 'middle',
+                // closeButton: {
+                //     text: '请关掉',
+                //     callback(toast) {
+                //         console.log(toast)
+                //     }
+                // }
+            })
         }
     },
 }
