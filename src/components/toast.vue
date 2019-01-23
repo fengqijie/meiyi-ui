@@ -46,6 +46,15 @@ export default {
         }
     },
     mounted() {
+        teacheringDetails:  [
+            {
+                nation: "汉族",
+                number: 1000
+            }, {
+                nation: "哈萨克族",
+                number: 1000
+            },
+        ];
         this.execAutoClose();
     },
     methods: {

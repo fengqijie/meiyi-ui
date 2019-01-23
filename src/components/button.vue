@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import mIcon from '@/components/icon'
 
 export default {
     props: {
@@ -26,9 +25,6 @@ export default {
                 return val === 'left' || val === 'right'
             }
         }
-    },
-    components:{
-        mIcon
     },
 }
 </script>

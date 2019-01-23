@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import mIcon from '@/components/icon'
 
 export default {
     name: "m-input",
@@ -36,9 +35,6 @@ export default {
             type: String
         }
     },
-    components: {
-        mIcon,
-    }
 }
 </script>
 

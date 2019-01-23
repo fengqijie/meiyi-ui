@@ -15,15 +15,12 @@
             <m-col span="18" offset="1">右边</m-col>
         </m-row>
         <button @click="showToast" style="margin: 30px 0;">点击弹出toast</button>
+
+        <m-tabs></m-tabs>
     </div>
 </template>
 
 <script>
-import mButton from '@/components/button'
-import mPagination from '@/components/pagination'
-import mInput from '@/components/input'
-import mRow from '@/components/row'
-import mCol from '@/components/col'
 
 export default {
     data() {
@@ -31,13 +28,6 @@ export default {
             isLoading: false,
             message: 'hi'
         }
-    },
-    components: {
-        mButton,
-        mPagination,
-        mInput,
-        mRow,
-        mCol,
     },
     methods: {
         showToast() {
