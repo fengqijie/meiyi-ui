@@ -7,7 +7,7 @@ import pagination from '@/components/pagination'
 import Input from '@/components/input'
 import Row from '@/components/row'
 import Col from '@/components/col'
-import Toast from '@/components/Toast'
+import Toast from '@/components/toast'
 
 
 
