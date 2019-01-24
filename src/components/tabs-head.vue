@@ -7,7 +7,9 @@
 
 <script>
 export default {
-    name: 'mTabsHead'
+    name: 'mTabsHead',
+    inject: ['eventBus'], //注入
+    created() {},
 }
 </script>
 
