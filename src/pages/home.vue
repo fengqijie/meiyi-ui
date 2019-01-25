@@ -22,7 +22,7 @@
             <m-tabs selected="selectedTab" @update:selected="selectedTab = $event">
          -->
         <m-tabs :selected.sync="selectedTab">
-            <m-tabs-head>
+            <m-tabs-head action="设置">
                 <m-tabs-item name="beauty">美女</m-tabs-item>
                 <m-tabs-item name="financeEconomics">财经</m-tabs-item>
                 <m-tabs-item name="sports">体育</m-tabs-item>
@@ -30,7 +30,7 @@
             <m-tabs-body>
                 <m-tabs-pane name="beauty">美女相关内容</m-tabs-pane>
                 <m-tabs-pane name="financeEconomics">财经相关内容</m-tabs-pane>
-                <m-tabs-pane name="sports">财经相关内容</m-tabs-pane>
+                <m-tabs-pane name="sports">体育相关内容</m-tabs-pane>
             </m-tabs-body>
         </m-tabs>
     </div>

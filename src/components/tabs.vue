@@ -28,8 +28,10 @@ export default {
         }
     },
     created() {
-        this.$
         // this.$emit('update: selected', 'xxx')
+    },
+    mounted() {
+        this.eventBus.$emit('update:selected', this.selected)
     },
     provide() {
         return {
