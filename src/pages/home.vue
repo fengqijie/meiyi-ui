@@ -33,6 +33,15 @@
                 <m-tabs-pane name="sports">体育相关内容</m-tabs-pane>
             </m-tabs-body>
         </m-tabs>
+
+        <m-popover style="margin-top: 40px;">
+            <template slot="content">
+                <div>我是内容</div>
+            </template>
+            <template>
+                <button>点击展示hint</button>
+            </template>
+        </m-popover>
     </div>
 </template>
 
