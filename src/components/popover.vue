@@ -48,22 +48,28 @@ export default {
             const { contentWrapper, triggerWrpper } = this.$refs;
             document.body.appendChild(contentWrapper);
             // 获取span的位置
-            let { width, height, top, left } = triggerWrpper.getBoundingClientRect();
-            if (this.position === 'top') {
-                contentWrapper.style.left = left + window.scrollX + 'px';
-                contentWrapper.style.top = top + window.scrollY + 'px';
-            } else if (this.position === 'bottom') {
-                contentWrapper.style.left = left + window.scrollX + 'px';
-                contentWrapper.style.top = top + height + window.scrollY + 'px';
-            } else if (this.position === 'left') {
-                let {height: selfHeight} = contentWrapper.getBoundingClientRect();
-                contentWrapper.style.left = left + window.scrollX + 'px';
-                contentWrapper.style.top = top + window.scrollY + (height-selfHeight) / 2 + 'px';
-            } else if (this.position === 'right') {
-                let {height: selfHeight} = contentWrapper.getBoundingClientRect();
-                contentWrapper.style.left = left + width + window.scrollX + 'px';
-                contentWrapper.style.top = top + window.scrollY + (height-selfHeight) / 2 + 'px';
+            const { width, height, top, left } = triggerWrpper.getBoundingClientRect();
+            const {height: selfHeight} = contentWrapper.getBoundingClientRect();
+            let x = {
+                top: {
+                    top: top + window.scrollY,
+                    left: left + window.scrollX
+                },
+                bottom: {
+                    top: top + height + window.scrollY,
+                    left: left + window.scrollX
+                },
+                left: {
+                    top: top + window.scrollY + (height-selfHeight) / 2,
+                    left: left + window.scrollX
+                },
+                right: {
+                    top: top + window.scrollY + (height-selfHeight) / 2,
+                    left: left + width + window.scrollX
+                },
             }
+            contentWrapper.style.left = x[this.position].left + 'px';
+            contentWrapper.style.top = x[this.position].top + 'px';
         },
         onClickDocument(e) {
             if (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target)) { return }
