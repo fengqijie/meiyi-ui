@@ -34,13 +34,13 @@
             </m-tabs-body>
         </m-tabs>
 
-        <div style="overflow: hidden; border: 1px solid red; margin-top: 40px;">
+        <div style="margin-top: 40px;">
             <m-popover style="">
                 <template slot="content">
                     <div>我是内容</div>
                 </template>
                 <template>
-                    <button>点击展示hint</button>
+                    <m-button>点击展示popover</m-button>
                 </template>
             </m-popover>
         </div>
