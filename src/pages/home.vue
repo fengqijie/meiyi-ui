@@ -34,8 +34,8 @@
             </m-tabs-body>
         </m-tabs>
 
-        <div style="margin-top: 40px;">
-            <m-popover style="">
+        <div style="margin: 40px 100px">
+            <m-popover position="right">
                 <template slot="content">
                     <div>我是内容</div>
                 </template>
