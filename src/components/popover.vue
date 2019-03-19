@@ -1,5 +1,5 @@
 <template>
-    <div class="popover" ref="popover" @click.stop="showPopover">
+    <div class="popover" ref="popover">
         <div class="content-wrapper" :class="{[`position-${position}`]: true}" ref="contentWrapper" v-if="visible" @click.stop>
             <!-- slot 不支持引用，也就是ref -->
             <slot name="content"></slot>
@@ -25,6 +25,21 @@ export default {
             validator(value) {
                 return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
             }
+        },
+        trigger: {
+            type: String,
+            default: 'click',
+            validator(value) {
+                return ['click', 'hover'].indexOf(value) >= 0
+            }
+        }
+    },
+    mounted() {
+        if (this.trigger === 'click') {
+            this.$refs.popover.addEventListener('click', this.showPopover)
+        } else {
+            this.$refs.popover.addEventListener('mouseenter', this.open)
+            this.$refs.popover.addEventListener('mouseleave', this.close)
         }
     },
     methods: {
@@ -80,8 +95,6 @@ export default {
             document.removeEventListener('click', this.onClickDocument)
         }
     },
-    mounted() {
-    }
 }
 </script>
 
