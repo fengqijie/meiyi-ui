@@ -47,6 +47,7 @@ export default {
             if (this.$refs.triggerWrpper.contains(event.target)) {
                 if(this.visible === true) {
                     this.close()
+                    console.log('showPopover 关闭')
                 } else {
                     this.open()
                 }
@@ -87,7 +88,7 @@ export default {
             contentWrapper.style.top = x[this.position].top + 'px';
         },
         onClickDocument(e) {
-            if (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target)) { return }
+            if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) { return }
             this.close()
         },
         close() {
@@ -96,12 +97,9 @@ export default {
         }
     },
     destroyed() {
-        if (this.trigger === 'click') {
-            this.$refs.popover.removeEventListener('click', this.showPopover)
-        } else {
-            this.$refs.popover.removeEventListener('mouseenter', this.open)
-            this.$refs.popover.removeEventListener('mouseleave', this.close)
-        }
+        // this.$refs.popover.removeEventListener('click', this.showPopover)
+        // this.$refs.popover.removeEventListener('mouseenter', this.open)
+        // this.$refs.popover.removeEventListener('mouseleave', this.close)
     }
 }
 </script>
@@ -140,10 +138,12 @@ export default {
         &::before {
             top: 100%;
             border-top-color: #e8e8e8;
+            border-bottom: none;
         }
         &::after {
             top: calc(100% - 1px);
             border-top-color: #ffffff;
+            border-bottom: none;
         }
     }
     &.position-bottom {
@@ -155,10 +155,12 @@ export default {
         &::before {
             bottom: 100%;
             border-bottom-color: #e8e8e8;
+            border-top: none;
         }
         &::after {
             bottom: calc(100% - 1px);
             border-bottom-color: #ffffff;
+            border-top: none;
         }
     }
     &.position-left {
@@ -172,10 +174,12 @@ export default {
         &::before {
             left: 100%;
             border-left-color: #e8e8e8;
+            border-right: none;
         }
         &::after {
             left: calc(100% - 1px);
             border-left-color: #ffffff;
+            border-right: none;
         }
     }
     &.position-right {
@@ -188,10 +192,12 @@ export default {
         &::before {
             right: 100%;
             border-right-color: #e8e8e8;
+            border-left: none;
         }
         &::after {
             right: calc(100% - 1px);
             border-right-color: #ffffff;
+            border-left: none;
         }
     }
 }

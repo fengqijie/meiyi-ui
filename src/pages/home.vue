@@ -35,7 +35,7 @@
         </m-tabs>
 
         <div style="margin: 40px 100px">
-            <m-popover position="bottom" trigger="hover">
+            <m-popover position="bottom">
                 <template slot="content">
                     <div>我是内容</div>
                 </template>
