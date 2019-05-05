@@ -14,6 +14,8 @@ import TabsBody from '@/components/tabs-body'
 import TabsItem from '@/components/tabs-item'
 import TabsPane from '@/components/tabs-pane'
 import Popover from '@/components/popover'
+import Collapse from '@/components/collapse'
+import CollapseItem from '@/components/collapse-item'
 
 Vue.use(Router)
 
@@ -30,6 +32,8 @@ Vue.component('m-tabs-body', TabsBody)
 Vue.component('m-tabs-item', TabsItem)
 Vue.component('m-tabs-pane', TabsPane)
 Vue.component('m-popover', Popover)
+Vue.component('m-collapse', Collapse)
+Vue.component('m-collapse-item', CollapseItem)
 
 export default new Router({
   routes: [
