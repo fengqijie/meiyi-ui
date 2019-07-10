@@ -1,5 +1,6 @@
 @color: limegreen;
 @bgcolor: lightskyblue;
+@input-height: 32px;
 
 html {
     font-size: 14px;
@@ -11,12 +12,12 @@ html {
 }
 
 *::selection {
-    background-color: bgcolor;
+    background-color: @bgcolor;
     color: #666;
 }
 
 *::-moz-selection {
-    background-color: bgcolor;
+    background-color: @bgcolor;
     color: #666;
 }
 

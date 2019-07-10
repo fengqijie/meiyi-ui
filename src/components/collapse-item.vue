@@ -46,11 +46,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@borderRadius: 4px;
-@borderColor: #ddd;
+@import '../assets/css/var.less';
 .m_collapse_item {
     .title {
-        border: 1px solid @borderColor;
+        border: 1px solid @border-color;
         margin-top: -1px;
         margin-left: -1px;
         margin-right: -1px;
@@ -61,14 +60,14 @@ export default {
     }
     &:first-child {
         .title {
-            border-top-left-radius: @borderRadius;
-            border-top-right-radius: @borderRadius;
+            border-top-left-radius: @border-radius;
+            border-top-right-radius: @border-radius;
         }
     }
     &:last-child {
         .title:last-child {
-            border-bottom-left-radius: @borderRadius;
-            border-bottom-right-radius: @borderRadius;
+            border-bottom-left-radius: @border-radius;
+            border-bottom-right-radius: @border-radius;
         }
     }
 }

@@ -16,6 +16,7 @@ import TabsPane from '@/components/tabs-pane'
 import Popover from '@/components/popover'
 import Collapse from '@/components/collapse'
 import CollapseItem from '@/components/collapse-item'
+import Cascader from '@/components/cascader'
 
 Vue.use(Router)
 
@@ -34,6 +35,7 @@ Vue.component('m-tabs-pane', TabsPane)
 Vue.component('m-popover', Popover)
 Vue.component('m-collapse', Collapse)
 Vue.component('m-collapse-item', CollapseItem)
+Vue.component('m-cascader', Cascader)
 
 export default new Router({
   routes: [

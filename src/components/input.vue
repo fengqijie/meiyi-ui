@@ -40,13 +40,9 @@ export default {
 
 
 <style lang="less" scoped>
+@import '../assets/css/var.less';
 .m-input {
     margin: 20px 0;
-    @height: 32px;
-    @border-color: #e8e8e8;
-    @border-hover-color: #ccc;
-    @border-radius: 4px;
-    @font-size: 14px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
