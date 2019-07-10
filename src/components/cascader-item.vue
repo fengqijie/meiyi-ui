@@ -1,22 +1,39 @@
 <template>
     <div class="cascader-item">
-        {{ optionsItem.name }}
-        <div v-if="optionsItem.children">
-            <cascader-item
-                v-for="item in optionsItem.children"
+        <div class="left">
+            <div
+                class="label"
+                v-for="item in options"
                 :key="item.code"
-                :optionsItem="item"
-            ></cascader-item>
+                @click="leftSelected = item"
+            >{{ item.name }}</div>
+        </div>
+        <div class="right" v-if="rightItems">
+            <m-cascader-item :options="rightItems"></m-cascader-item>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'cascader-item',
+    name: 'm-cascader-item',
     props: {
-        optionsItem: {
-            type: Object
+        options: {
+            type: Array
+        }
+    },
+    data() {
+        return {
+            leftSelected: null
+        }
+    },
+    computed: {
+        rightItems() {
+            if(this.leftSelected && this.leftSelected.children) {
+                return this.leftSelected.children
+            } else {
+                return null
+            }
         }
     }
 }
@@ -24,8 +41,15 @@ export default {
 
 <style lang="less" scoped>
 .cascader-item {
-    border: 1px solid red;
-    margin: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .left {
+        border: 1px solid #e8e8e8;
+    }
+    .right {
+        margin-top: -1px;
+    }
 }
 </style>
 

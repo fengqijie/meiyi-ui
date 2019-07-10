@@ -1,12 +1,10 @@
 <template>
     <div class="cascader">
-        <div class="trigger">
+        <div class="trigger" @click="popoverVisible != popoverVisible">
             <slot></slot>
         </div>
-        <div class="popover">
-            <div v-for="item in options" :key="item.code">
-                <cascader-item :optionsItem="item"></cascader-item>
-            </div>
+        <div class="popover" v-if="popoverVisible">
+            <cascader-item :options="options"></cascader-item>
         </div>
     </div>
 </template>
@@ -20,13 +18,20 @@ export default {
         options: {
             type: Array
         }
+    },
+    data() {
+        return {
+            popoverVisible: true,
+        }
     }
 }
 </script>
 
 <style lang="less" scoped>
 @import '../assets/css/var.less';
-.cascader {}
+.cascader {
+    .trigger {}
+}
 </style>
 
 
