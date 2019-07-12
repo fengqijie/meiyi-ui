@@ -50,9 +50,6 @@
             <m-collapse-item title="标题2" name="2">内容2</m-collapse-item>
             <m-collapse-item title="标题3" name="3">内容3</m-collapse-item>
         </m-collapse>
-        <div>{{ selected && selected[0] && selected[0].name || '空' }}</div>
-        <div>{{ selected && selected[1] && selected[1].name || '空' }}</div>
-        <div>{{ selected && selected[2] && selected[2].name || '空' }}</div>
         <m-cascader :options="cascaderList" :selected.sync="selected"></m-cascader> 
     </div>
 </template>

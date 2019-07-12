@@ -2,7 +2,7 @@
     <button class="m-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
         <m-icon v-if="loading" class="m-icon loading" name="loading"></m-icon>
         <m-icon v-if="icon && !loading" class="m-icon" :name="icon"></m-icon>
-        <div class="content">
+        <div class="button-text">
             <slot></slot>
         </div>
     </button>
@@ -63,7 +63,7 @@ export default {
         margin: 0;
         margin-right: 0.2em;
     }
-    > .content {
+    > .button-text {
         order: 2
     }
     &.icon-right {
@@ -72,7 +72,7 @@ export default {
             margin: 0;
             margin-left: 0.2em;
         }
-        > .content {
+        > .button-text {
             order: 1
         }
     }
