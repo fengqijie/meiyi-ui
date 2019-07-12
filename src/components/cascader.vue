@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         onUpdateSelected(newSelected) {
-            this.$emit('update: selected', newSelected)
+            this.$emit('update:selected', newSelected)
         }
     },
     computed: {
