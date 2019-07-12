@@ -1,10 +1,10 @@
 <template>
     <div class="cascader">
-        <div class="trigger" @click="popoverVisible != popoverVisible">
+        <div class="trigger" @click="popoverVisible = !popoverVisible">
             <slot></slot>
         </div>
         <div class="popover" v-if="popoverVisible">
-            <cascader-item :options="options"></cascader-item>
+            <cascader-item :options="options" :selected="selected" @update:selected="onUpdateSelected"></cascader-item>
         </div>
     </div>
 </template>
@@ -17,11 +17,25 @@ export default {
     props: {
         options: {
             type: Array
-        }
+        },
+        selected: {
+            type: Array,
+            default: () => []
+        },
     },
     data() {
         return {
-            popoverVisible: true,
+            popoverVisible: false,
+        }
+    },
+    methods: {
+        onUpdateSelected(newSelected) {
+            this.$emit('update: selected', newSelected)
+        }
+    },
+    computed: {
+        result() {
+            return this.selected.map(item => item.name).join('/')
         }
     }
 }
@@ -30,7 +44,20 @@ export default {
 <style lang="less" scoped>
 @import '../assets/css/var.less';
 .cascader {
-    .trigger {}
+    position: relative;
+    .trigger {
+        border: 1px solid @border-color;
+        border-radius: @border-radius;
+        height: @height;
+        width: 100px;
+    }
+    .popover {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border: 1px solid @border-color;
+    }
 }
 </style>
 
