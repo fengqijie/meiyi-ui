@@ -7,7 +7,7 @@
                 :key="item.code"
                 @click="onClickLabel(item)"
             >
-                {{ item.name }}
+                <span class="name">{{ item.name }}</span>
                 <span v-if="item.children" class="icon"> > </span>
             </div>
         </div>
@@ -35,6 +35,12 @@ export default {
     },
     computed: {
         rightItems() {
+            // if(this.selected && this.selected[this.level]) {
+            //     let item = this.options.filter(item => item.name === this.selected[this.level].name)
+            //     if(item && item[0].children && item[0].children.length > 0) {
+            //         return item.children
+            //     }
+            // }
             let currentSelected = this.selected[this.level]
             if(currentSelected && currentSelected.children) {
                 return currentSelected.children
@@ -75,12 +81,18 @@ export default {
     .label {
         padding: .3em 1em;
         display: flex;
+        &:hover {
+            background: #f7f7f7;
+        }
+        .name {
+            margin-right: 1em;
+        }
         .icon {
             color: #ccc;
             font-size: 12px;
             line-height: 1.8;
             font-weight: 300;
-            margin-left: 1em;
+            margin-left: auto;
         }
     }
 }
