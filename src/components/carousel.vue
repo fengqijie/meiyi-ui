@@ -1,5 +1,12 @@
 <template>
-    <div class="m-carousel" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+    <div
+        class="m-carousel"
+        @mouseenter="onMouseEnter"
+        @mouseleave="onMouseLeave"
+        @touchstart="onTouchStart"
+        @touchmove="onTouchMove"
+        @touchend="onTouchEnd"
+        >
         <div class="m-carousel-window">
             <div class="m-carouse-wrapper">
                 <slot></slot>
@@ -31,7 +38,8 @@ export default {
     data() {
         return {
             childrenLength: 0,
-            timer: undefined
+            timer: undefined,
+            startTouch: undefined
         }
     },
     mounted() {
@@ -44,6 +52,8 @@ export default {
     },
     methods: {
         select(index) {
+            if(index === -1) {index = this.names.length - 1}
+            if(index === this.names.length) {index = 0}
             this.$emit('update:selected', this.names[index])
         },
         updateChild() {
@@ -80,11 +90,39 @@ export default {
         },
         onMouseLeave() {
             this.playAutomaticlly()
-        }
+        },
+        onTouchStart(e) {
+            this.pause()
+            if(e.touches.length > 1) {return}
+            this.startTouch = e.touches[0]
+        },
+        onTouchMove() {
+            console.log("移动")
+        },
+        onTouchEnd(e) {
+            let endTouch = e.changedTouches[0]
+            let {clientX: x1, clientY: y1} = this.startTouch
+            let {clientX: x2, clientY: y2} = endTouch
+            
+            let distanceX = Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2))
+            let distanceY = Math.abs(y2 - y1)
+            let rate = distanceX / distanceY
+            if(rate > 2) {
+                if(x2 > x1) {
+                    this.select(this.selectedIndex - 1)
+                } else {
+                    this.select(this.selectedIndex + 1)
+                }
+            }
+            this.$nextTick(() => {
+                this.playAutomaticlly()
+            })
+        },
     },
     computed: {
         selectedIndex() {
-            return this.names.indexOf(this.selected) || 0
+            let currentIndex = this.names.indexOf(this.selected)
+            return currentIndex === -1 ? 0 : currentIndex
         },
         names() {
             return this.$children.map(vm => vm.name)
