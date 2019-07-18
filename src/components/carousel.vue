@@ -77,7 +77,7 @@ export default {
                 }
                 this.$emit('update:selected', this.names[index + 1])
                 index++
-                this.timer = setTimeout(run, 3000)
+                this.timer = setTimeout(run, 5000)
             }
             run()
         },
@@ -97,7 +97,7 @@ export default {
             this.startTouch = e.touches[0]
         },
         onTouchMove() {
-            console.log("移动")
+            // console.log("移动")
         },
         onTouchEnd(e) {
             let endTouch = e.changedTouches[0]
@@ -109,9 +109,9 @@ export default {
             let rate = distanceX / distanceY
             if(rate > 2) {
                 if(x2 > x1) {
-                    this.select(this.selectedIndex - 1)
+                    this.select(this.selectedIndex - 2)
                 } else {
-                    this.select(this.selectedIndex + 1)
+                    this.select(this.selectedIndex)
                 }
             }
             this.$nextTick(() => {
