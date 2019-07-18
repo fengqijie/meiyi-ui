@@ -1,5 +1,5 @@
 <template>
-    <div class="m-carousel">
+    <div class="m-carousel" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
         <div class="m-carousel-window">
             <div class="m-carouse-wrapper">
                 <slot></slot>
@@ -30,7 +30,8 @@ export default {
     },
     data() {
         return {
-            childrenLength: 0
+            childrenLength: 0,
+            timer: undefined
         }
     },
     mounted() {
@@ -48,7 +49,9 @@ export default {
         updateChild() {
             let selected = this.getSelected()
             this.$children.forEach(vm => {
-                vm.selected = selected
+                this.$nextTick(() => {
+                    vm.selected = selected
+                })
             })
         },
         getSelected() {
@@ -56,6 +59,7 @@ export default {
             return this.selected || first.name
         },
         playAutomaticlly() {
+            if(this.timer) {return}
             let index = this.names.indexOf(this.getSelected())
             let run = () => {
                 if(index === this.names.length) {
@@ -63,9 +67,19 @@ export default {
                 }
                 this.$emit('update:selected', this.names[index + 1])
                 index++
-                setTimeout(run, 3000)
+                this.timer = setTimeout(run, 3000)
             }
             run()
+        },
+        pause() {
+            window.clearTimeout(this.timer)
+            this.timer = undefined
+        },
+        onMouseEnter() {
+            this.pause()
+        },
+        onMouseLeave() {
+            this.playAutomaticlly()
         }
     },
     computed: {
@@ -81,6 +95,7 @@ export default {
 
 <style lang="less" scoped>
 .m-carousel {
+    position: relative;
     &-window {
         overflow: hidden;
     }
@@ -88,6 +103,9 @@ export default {
         position: relative;
     }
     .m-carousel-dots {
+        position: absolute;
+        bottom: 5px;
+        right: 0;
         span {
             display: inline-block;
             padding: 0 6px;

@@ -51,12 +51,14 @@
             <m-collapse-item title="标题3" name="3">内容3</m-collapse-item>
         </m-collapse>
         <m-cascader :options="cascaderList" :selected.sync="selected"></m-cascader> 
-        <m-carousel :selected.sync="selectedSlide">
-            <m-carousel-item name="1"><div class="slide">1</div></m-carousel-item>
-            <m-carousel-item name="2"><div class="slide">2</div></m-carousel-item>
-            <m-carousel-item name="3"><div class="slide">3</div></m-carousel-item>
-            <m-carousel-item name="4"><div class="slide">4</div></m-carousel-item>
-        </m-carousel>
+        <div style="width: 300px;">
+            <m-carousel :selected.sync="selectedSlide">
+                <m-carousel-item name="1"><div class="slide">one</div></m-carousel-item>
+                <m-carousel-item name="2"><div class="slide">two</div></m-carousel-item>
+                <m-carousel-item name="3"><div class="slide">three</div></m-carousel-item>
+                <m-carousel-item name="4"><div class="slide">four</div></m-carousel-item>
+            </m-carousel>
+        </div>
     </div>
 </template>
 
@@ -119,10 +121,11 @@ export default {
 <style lang="less" scoped>
 .slide {
     box-sizing: border-box;
-    // width: 200px;
     height: 150px;
     background: #f7f7f7;
     border: 1px solid #ccc;
+    text-align: center;
+    line-height: 150px;
 }
 </style>
 
