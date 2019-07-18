@@ -103,16 +103,26 @@ export default {
         position: relative;
     }
     .m-carousel-dots {
-        position: absolute;
-        bottom: 5px;
-        right: 0;
+        display: flex;
+        justify-content: center;
+        padding: 8px;
         span {
-            display: inline-block;
-            padding: 0 6px;
-            margin: 0 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 1.4em;
+            height: 1.4em;
             border-radius: 50%;
+            margin: 0 0.2em;
+            font-size: 12px;
             &.active {
                 background: #ccc;
+                &:hover {
+                    cursor: default;
+                }
+            }
+            &:hover {
+                cursor: pointer;
             }
         }
     }
