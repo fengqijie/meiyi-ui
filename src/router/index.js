@@ -17,6 +17,8 @@ import Popover from '@/components/popover'
 import Collapse from '@/components/collapse'
 import CollapseItem from '@/components/collapse-item'
 import Cascader from '@/components/cascader'
+import Carousel from '@/components/carousel'
+import CarouselItem from '@/components/carousel-item'
 
 Vue.use(Router)
 
@@ -36,6 +38,8 @@ Vue.component('m-popover', Popover)
 Vue.component('m-collapse', Collapse)
 Vue.component('m-collapse-item', CollapseItem)
 Vue.component('m-cascader', Cascader)
+Vue.component('m-carousel', Carousel)
+Vue.component('m-carousel-item', CarouselItem)
 
 export default new Router({
   routes: [
