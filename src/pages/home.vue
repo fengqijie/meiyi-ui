@@ -51,7 +51,7 @@
             <m-collapse-item title="标题3" name="3">内容3</m-collapse-item>
         </m-collapse>
         <m-cascader :options="cascaderList" :selected.sync="selected"></m-cascader> 
-        <div style="width: 300px;">
+        <div style="width: 300px; margin: 30px 0">
             <m-carousel :selected.sync="selectedSlide">
                 <m-carousel-item name="1"><div class="slide">one</div></m-carousel-item>
                 <m-carousel-item name="2"><div class="slide">two</div></m-carousel-item>
