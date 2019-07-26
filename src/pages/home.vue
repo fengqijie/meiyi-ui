@@ -59,6 +59,13 @@
                 <m-carousel-item name="4"><div class="slide">four</div></m-carousel-item>
             </m-carousel>
         </div>
+        <div style="margin: 30px 0">
+            <m-nav :selected.sync="navSelected">
+                <m-nav-item name="home">首页</m-nav-item>
+                <m-nav-item name="about">关于</m-nav-item>
+                <m-nav-item name="hire">招聘</m-nav-item>
+            </m-nav>
+        </div>
     </div>
 </template>
 
@@ -99,7 +106,8 @@ export default {
                 },
             ],
             selected: [],
-            selectedSlide: '1'
+            selectedSlide: '1',
+            navSelected: ['home']
         }
     },
     methods: {

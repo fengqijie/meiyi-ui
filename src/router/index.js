@@ -19,6 +19,9 @@ import CollapseItem from '@/components/collapse-item'
 import Cascader from '@/components/cascader'
 import Carousel from '@/components/carousel'
 import CarouselItem from '@/components/carousel-item'
+import Nav from '@/components/nav/nav'
+import NavItem from '@/components/nav/nav-item'
+import SubNav from '@/components/nav/sub-nav'
 
 Vue.use(Router)
 
@@ -40,6 +43,9 @@ Vue.component('m-collapse-item', CollapseItem)
 Vue.component('m-cascader', Cascader)
 Vue.component('m-carousel', Carousel)
 Vue.component('m-carousel-item', CarouselItem)
+Vue.component('m-nav', Nav)
+Vue.component('m-nav-item', NavItem)
+Vue.component('m-sub-nav', SubNav)
 
 export default new Router({
   routes: [
