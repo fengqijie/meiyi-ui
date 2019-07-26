@@ -30,8 +30,7 @@ export default {
     position: relative;
     > span {
         padding: 10px 20px;
-        display: inline-block;
-        vertical-align: top;
+        display: block;
     }
     &-popover {
         position: absolute;
