@@ -62,7 +62,11 @@
         <div style="margin: 30px 0">
             <m-nav :selected.sync="navSelected">
                 <m-nav-item name="home">首页</m-nav-item>
-                <m-nav-item name="about">关于</m-nav-item>
+                <m-sub-nav>
+                    <template>关于</template>
+                    <m-nav-item name="cultures">企业文化</m-nav-item>
+                    <m-nav-item name="contacts">联系我们</m-nav-item>
+                </m-sub-nav>
                 <m-nav-item name="hire">招聘</m-nav-item>
             </m-nav>
         </div>
@@ -107,7 +111,7 @@ export default {
             ],
             selected: [],
             selectedSlide: '1',
-            navSelected: ['home']
+            navSelected: ['cultures']
         }
     },
     methods: {
