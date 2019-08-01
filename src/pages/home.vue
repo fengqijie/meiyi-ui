@@ -70,10 +70,15 @@
                 <m-nav-item name="hire">招聘</m-nav-item>
             </m-nav>
         </div>
+        <div style="margin: 30px 0">
+            <label>请输入邮箱号码:</label>
+            <input type="text" v-model="regInputVal" @mouseleave="onInput"/>
+        </div>
     </div>
 </template>
 
 <script>
+import Validator from '@/utils/validate.js'
 
 export default {
     data() {
@@ -111,10 +116,19 @@ export default {
             ],
             selected: [],
             selectedSlide: '1',
-            navSelected: ['cultures']
+            navSelected: ['cultures'],
+            regInputVal: ''
         }
     },
     methods: {
+        onInput() {
+            let validator = new Validator()
+            // console.log(validator)
+            let rules = [
+                { key: 'email', required: true }
+            ]
+            validator.required(this.regInputVal)
+        },
         showToast() {
             this.$toast(`我是message${parseInt(Math.random() * 100)}`, {
                 position: 'middle',
