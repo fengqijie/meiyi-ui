@@ -74,6 +74,9 @@
             <label>请输入邮箱号码:</label>
             <input type="text" v-model="regInputVal" @mouseleave="onInput"/>
         </div>
+        <div style="margin: 30px 0">
+            <m-pager :total-page="20" :current-page="3"></m-pager>
+        </div>
     </div>
 </template>
 
@@ -117,7 +120,7 @@ export default {
             selected: [],
             selectedSlide: '1',
             navSelected: ['cultures'],
-            regInputVal: ''
+            regInputVal: '',
         }
     },
     methods: {

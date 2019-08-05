@@ -22,6 +22,7 @@ import CarouselItem from '@/components/carousel-item'
 import Nav from '@/components/nav/nav'
 import NavItem from '@/components/nav/nav-item'
 import SubNav from '@/components/nav/sub-nav'
+import Pager from '@/components/pager'
 
 Vue.use(Router)
 
@@ -46,6 +47,7 @@ Vue.component('m-carousel-item', CarouselItem)
 Vue.component('m-nav', Nav)
 Vue.component('m-nav-item', NavItem)
 Vue.component('m-sub-nav', SubNav)
+Vue.component('m-pager', Pager)
 
 export default new Router({
   routes: [
