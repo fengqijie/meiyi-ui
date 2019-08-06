@@ -1,10 +1,22 @@
 <template>
-    <div class="m-pager">
-        <span
-            v-for="page in pages"
-            :key="page" class="m-pager-item"
-            :class="{active: page === currentPage, separator: page === '...'}"
-        >{{ page }}</span>
+    <div class="m-pager" :class="{hide: hideIfOnePage === true && totalPage <= 1}">
+        <span class="m-pager-nav prev" :class="{disabled: currentPage === 1}" @click="onClickPage(currentPage-1)">
+            <m-icon name="left"></m-icon>
+        </span>
+        <template v-for="page in pages">
+            <template v-if="page === currentPage">
+                <span class="current" :key="page">{{page}}</span>
+            </template>
+            <template v-else-if="page === '...'">
+                <span class="separator" :key="page">{{page}}</span>
+            </template>
+            <template v-else>
+                <span class="other" :key="page" @click="onClickPage(page)">{{page}}</span>
+            </template>
+        </template>
+        <span class="m-pager-nav next" :class="{disabled: currentPage === totalPage}" @click="onClickPage(currentPage+1)">
+            <m-icon name="right"></m-icon>
+        </span>
     </div>
 </template>
 
@@ -22,23 +34,28 @@ export default {
         },
         hideIfOnePage: {
             type: Boolean,
-            default: true
+            default: false
         }
     },
-    data() {
-        let pages = [1, this.totalPage, this.currentPage, this.currentPage - 1, this.currentPage - 2, this.currentPage + 1, this.currentPage + 2]
-        let u = unique(pages.sort((a, b) => a - b))
-        let u2 = u.reduce((prev, current, index) => {
-            if(u[index+1] !== undefined && u[index+1] - u[index] > 1) {
-                prev.push(current)
-                prev.push('...')
-            } else {
-                prev.push(current)
+    computed: {
+        pages() {
+            let pages = unique(
+                [1, this.totalPage, this.currentPage, this.currentPage - 1, this.currentPage - 2, this.currentPage + 1, this.currentPage + 2]
+                .filter(n => n >= 1 && n <= this.totalPage)
+                .sort((a, b) => a - b))
+                .reduce((prev, current, index, array) => {
+                    prev.push(current)
+                    array[index + 1] !== undefined && array[index + 1] - array[index] > 1 && prev.push('...')
+                    return prev
+            }, [])
+            return pages
+        }
+    },
+    methods: {
+        onClickPage(num) {
+            if(num >= 1 && num <= this.totalPage) {
+                this.$emit('update:currentPage', num)
             }
-            return prev
-        }, [])
-        return {
-            pages: u2
         }
     }
 }
@@ -57,7 +74,13 @@ function unique(array) {
 <style lang="less" scoped>
 @import '../assets/css/var.less';
 .m-pager {
-    &-item {
+    &.hide {
+        display: none;
+    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    span {
         margin: 0 4px;
         border: 1px solid @border-color;
         border-radius: @border-radius;
@@ -68,16 +91,25 @@ function unique(array) {
         min-height: 22px;
         min-width: 16px;
         cursor: pointer;
-        &.active,
+        &.current,
         &:hover {
             border-color: @blue;
         }
-        &.active {
+        &.current {
             cursor: default;
         }
         &.separator {
             border: none;
             cursor: default;
+        }
+        &.m-pager-nav {
+            border: none;
+        }
+        &.disabled {
+            cursor: default;
+            .m-icon {
+                fill: #cccccc;
+            }
         }
     }
 }

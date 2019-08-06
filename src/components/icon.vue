@@ -15,6 +15,7 @@ export default {
 .m-icon {
     width: 1em;
     height: 1em;
+    fill: #666;
 }
 </style>
 

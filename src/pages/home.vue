@@ -75,7 +75,7 @@
             <input type="text" v-model="regInputVal" @mouseleave="onInput"/>
         </div>
         <div style="margin: 30px 0">
-            <m-pager :total-page="20" :current-page="3"></m-pager>
+            <m-pager :total-page="20" :current-page.sync="currentPage"></m-pager>
         </div>
     </div>
 </template>
@@ -121,6 +121,7 @@ export default {
             selectedSlide: '1',
             navSelected: ['cultures'],
             regInputVal: '',
+            currentPage: 1
         }
     },
     methods: {
