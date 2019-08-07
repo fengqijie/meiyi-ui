@@ -77,6 +77,10 @@
         <div style="margin: 30px 0">
             <m-pager :total-page="20" :current-page.sync="currentPage"></m-pager>
         </div>
+        {{tableChecked}}
+        <div style="margin: 30px 0">
+            <m-table :columns="columns" :dataSource="tableData" striped @changeItem="selectedRow"></m-table>
+        </div>
     </div>
 </template>
 
@@ -121,10 +125,30 @@ export default {
             selectedSlide: '1',
             navSelected: ['cultures'],
             regInputVal: '',
-            currentPage: 1
+            currentPage: 1,
+            columns: [
+                {text: '姓名', field: 'name'},
+                {text: '年龄', field: 'age'},
+            ],
+            tableData: [
+                {id: 1, name: '张三', age: 18},
+                {id: 2, name: '李四', age: 19},
+                {id: 3, name: '王五', age: 17},
+                {id: 4, name: '黑豹', age: 20},
+            ],
+            tableChecked: []
         }
     },
     methods: {
+        selectedRow(obj) {
+            let {selected, item, index} = obj
+            if(selected) {
+                this.tableChecked.push(item)
+            } else {
+                let index = this.tableChecked.indexOf(item)
+                this.tableChecked.splice(index, 1)
+            }
+        },
         onInput() {
             let validator = new Validator()
             // console.log(validator)

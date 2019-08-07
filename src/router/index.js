@@ -23,6 +23,7 @@ import Nav from '@/components/nav/nav'
 import NavItem from '@/components/nav/nav-item'
 import SubNav from '@/components/nav/sub-nav'
 import Pager from '@/components/pager'
+import Table from '@/components/table'
 
 Vue.use(Router)
 
@@ -48,6 +49,7 @@ Vue.component('m-nav', Nav)
 Vue.component('m-nav-item', NavItem)
 Vue.component('m-sub-nav', SubNav)
 Vue.component('m-pager', Pager)
+Vue.component('m-table', Table)
 
 export default new Router({
   routes: [
