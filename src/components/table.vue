@@ -3,7 +3,7 @@
         <table class="m-table" :class="{striped: striped === true}">
             <thead>
                 <tr>
-                    <th><input type="checkbox" @change="onChangeAllItem" ref="allChecked"></th>
+                    <th><input type="checkbox" @change="onChangeAllItem" ref="allChecked" :checked="isAllItemsSelected"></th>
                     <th v-for="column in columns" :key="column.field">{{ column.text }}</th>
                 </tr>
             </thead>
@@ -57,7 +57,6 @@ export default {
                 copy.push(item)
             } else {
                 copy = copy.filter(i => i.id !== item.id)
-                // copy.splice(copy.indexOf(item), 1)
             }
             this.$emit('update:selectedItems', copy)
         },
@@ -83,6 +82,24 @@ export default {
             } else {
                 this.$refs.allChecked.indeterminate = true
             }
+        }
+    },
+    computed: {
+        isAllItemsSelected() {
+            // 判断两个数组含有的id是一样的
+            const a = this.dataSource.map(item => item.id).sort()
+            const b = this.selectedItems.map(item => item.id).sort()
+            if (a.length !== b.length) {
+                return false
+            }
+            let equal = true
+            for (let i = 0; i < a.length; i++) {
+                if(a[i] !== b[i]) {
+                    equal = false
+                    break
+                }
+            }
+            return equal
         }
     }
 }
