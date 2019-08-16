@@ -23,14 +23,14 @@ export default {
             type: String,
             default: 'top',
             validator(value) {
-                return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
+                return ['top', 'bottom', 'left', 'right'].includes(value)
             }
         },
         trigger: {
             type: String,
             default: 'click',
             validator(value) {
-                return ['click', 'hover'].indexOf(value) >= 0
+                return ['click', 'hover'].includes(value)
             }
         }
     },
@@ -47,7 +47,6 @@ export default {
             if (this.$refs.triggerWrpper.contains(event.target)) {
                 if(this.visible === true) {
                     this.close()
-                    console.log('showPopover 关闭')
                 } else {
                     this.open()
                 }

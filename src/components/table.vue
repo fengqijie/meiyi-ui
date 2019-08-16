@@ -3,15 +3,21 @@
         <table class="m-table" :class="{striped: striped === true}">
             <thead>
                 <tr>
-                    <th><input type="checkbox" @change="onChangeAllItem(item, index, $event)"></th>
-                    <th v-for="column in columns" :key="column.id">{{ column.text }}</th>
+                    <th><input type="checkbox" @change="onChangeAllItem" ref="allChecked"></th>
+                    <th v-for="column in columns" :key="column.field">{{ column.text }}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="(item,index) in dataSource" :key="item.id">
-                    <td><input type="checkbox" @change="onChangeItem(item, index, $event)"></td>
+                    <td>
+                        <input
+                            type="checkbox"
+                            @change="onChangeItem(item, index, $event)"
+                            :checked="inSelectedItems(item)"
+                        >
+                    </td>
                     <template v-for="column in columns">
-                        <td :key="column.id">{{ item[column.field] }}</td>
+                        <td :key="column.field">{{ item[column.field] }}</td>
                     </template>
                 </tr>
             </tbody>
@@ -29,7 +35,10 @@ export default {
         },
         dataSource: {
             type: Array,
-            required: true
+            required: true,
+            validator(array) {
+                return array.filter(item => item.id === undefined).length > 0 ? false : true
+            }
         },
         striped: {
             type: Boolean,
@@ -44,13 +53,36 @@ export default {
         onChangeItem(item, index, e) {
             let selected = e.target.checked
             let copy = JSON.parse(JSON.stringify(this.selectedItems))
-            this.$emit('changeItem', {selected, item, index})
+            if(selected) {
+                copy.push(item)
+            } else {
+                copy = copy.filter(i => i.id !== item.id)
+                // copy.splice(copy.indexOf(item), 1)
+            }
+            this.$emit('update:selectedItems', copy)
         },
-        onChangeAllItem(item, index, e) {
+        onChangeAllItem(e) {
             let selected = e.target.checked
-            this.dataSource.map((item, index) => {
-                this.$emit('changeItem', {selected, item, index})
-            })
+            if(selected) {
+                this.$emit('update:selectedItems', this.dataSource)
+            } else {
+                this.$emit('update:selectedItems', [])
+            }
+            // this.$emit('update:selectedItems', selected ? this.dataSource : [])
+        },
+        inSelectedItems(item) {
+            return this.selectedItems.filter(i => i.id === item.id).length > 0
+        }
+    },
+    watch: {
+        selectedItems() {
+            if (this.selectedItems.length === this.dataSource.length) {
+                this.$refs.allChecked.indeterminate = false
+            } else if (this.selectedItems.length === 0) {
+                this.$refs.allChecked.indeterminate = false
+            } else {
+                this.$refs.allChecked.indeterminate = true
+            }
         }
     }
 }

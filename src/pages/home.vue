@@ -79,7 +79,7 @@
         </div>
         {{tableChecked}}
         <div style="margin: 30px 0">
-            <m-table :columns="columns" :dataSource="tableData" striped @changeItem="selectedRow"></m-table>
+            <m-table :columns="columns" :data-source="tableData" striped :selected-items.sync="tableChecked"></m-table>
         </div>
     </div>
 </template>
@@ -140,15 +140,15 @@ export default {
         }
     },
     methods: {
-        selectedRow(obj) {
-            let {selected, item, index} = obj
-            if(selected) {
-                this.tableChecked.push(item)
-            } else {
-                let index = this.tableChecked.indexOf(item)
-                this.tableChecked.splice(index, 1)
-            }
-        },
+        // selectedRow(obj) {
+        //     let {selected, item, index} = obj
+        //     if(selected) {
+        //         this.tableChecked.push(item)
+        //     } else {
+        //         let index = this.tableChecked.indexOf(item)
+        //         this.tableChecked.splice(index, 1)
+        //     }
+        // },
         onInput() {
             let validator = new Validator()
             // console.log(validator)

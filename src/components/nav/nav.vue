@@ -45,7 +45,7 @@ export default {
         },
         updateChildren() {
             this.items.forEach(vm => {
-                if(this.selected.indexOf(vm.name) >= 0) {
+                if(this.selected.includes(vm.name) >= 0) {
                     vm.selected = true
                 } else {
                     vm.selected = false
