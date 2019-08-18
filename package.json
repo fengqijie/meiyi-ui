@@ -1,9 +1,8 @@
 {
-  "name": "actionvue",
-  "version": "0.1.1",
-  "description": "UI components Base on vue.js",
-  "license": "MIT",
-  "author": "wencaizhang <1052642137@qq.como>",
+  "name": "guazi-ui",
+  "version": "1.0.0",
+  "description": "A guazi ui",
+  "author": "fengqijie <fengqijie@guazi.com>",
   "main": "./src/index.js",
   "scripts": {
     "dev": "npm run serve",
@@ -61,12 +60,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wencaizhang/ActionVue.git"
+    "url": "git+https://github.com/fengqijie/meiyi-ui.git"
   },
   "keywords": [
     "vue",
     "ui",
-    "actionvue",
     "npm",
     "component",
     "frontend"
