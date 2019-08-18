@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import './index.js'
 import plugin from '@/plugin'
 Vue.use(plugin)
 
@@ -13,5 +14,5 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
