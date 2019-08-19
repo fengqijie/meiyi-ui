@@ -1,4 +1,7 @@
-import button from '../../src/components/button'
+// import Button from '../../src/components/button'
+import meiyiUI from '../../src/index'
+import VueHighlightJS from 'vue-highlight.js';
+import 'highlight.js/styles/atom-one-dark.css';
 
 export default ({
     Vue, // VuePress 正在使用的 Vue 构造函数
@@ -8,5 +11,7 @@ export default ({
 }) => {
     // ...做一些其他的应用级别的优化
 
-    Vue.use(button)
+    // Vue.component('m-button', Button)
+    Vue.use(meiyiUI)
+    Vue.use(VueHighlightJS)
 }

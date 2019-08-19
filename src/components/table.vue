@@ -4,7 +4,15 @@
             <thead>
                 <tr>
                     <th><input type="checkbox" @change="onChangeAllItem" ref="allChecked" :checked="isAllItemsSelected"></th>
-                    <th v-for="column in columns" :key="column.field">{{ column.text }}</th>
+                    <th v-for="column in columns" :key="column.field">
+                        <div class="m-table-header">
+                            {{ column.text }}
+                            <span v-if="column.field in orderBy" class="m-table-sorter" @click="changeOrderBy(column.field)">
+                                <m-icon name="up" :class="{active: orderBy[column.field] === 'ascend'}"></m-icon>
+                                <m-icon name="down" :class="{active: orderBy[column.field] === 'descend'}"></m-icon>
+                            </span>
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -47,9 +55,29 @@ export default {
         selectedItems: {
             type: Array,
             default: () => []
+        },
+        orderBy: {
+            type: Object,
+            default: () => ({}),
+            // validator(obj) {
+            //     // 在vue里面 无法在一个属性里判断另一个属性的合法性
+            // } 
         }
     },
     methods: {
+        changeOrderBy(key) {
+            const copy = JSON.parse(JSON.stringify(this.orderBy))
+            let oldValue = copy[key]
+            if (oldValue === 'ascend') {
+                copy[key] = 'descend'
+            } else if (oldValue === 'descend') {
+                copy[key] = true
+            } else {
+                copy[key] = 'ascend'
+            }
+            
+            this.$emit('update:orderBy', copy)
+        },
         onChangeItem(item, index, e) {
             let selected = e.target.checked
             let copy = JSON.parse(JSON.stringify(this.selectedItems))
@@ -124,6 +152,33 @@ export default {
                 &:nth-child(even) {
                     background-color: #fafafa;
                 }
+            }
+        }
+    }
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &-sorter {
+        display: inline-flex;
+        flex-direction: column;
+        margin: 0 4px;
+        cursor: pointer;
+        svg {
+            width: 10px;
+            height: 10px;
+            fill: #ccc;
+            &.active {
+                fill: #888;
+            }
+            &:first-child {
+                position: relative;
+                bottom: -2px;
+            }
+            &:nth-child(2) {
+                position: relative;
+                top: -2px;
             }
         }
     }

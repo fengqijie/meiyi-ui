@@ -79,7 +79,13 @@
         </div>
         {{tableChecked}}
         <div style="margin: 30px 0">
-            <m-table :columns="columns" :data-source="tableData" striped :selected-items.sync="tableChecked"></m-table>
+            <m-table
+                :columns="columns"
+                :data-source="tableData"
+                striped
+                :selected-items.sync="tableChecked"
+                :order-by.sync="orderBy"
+            ></m-table>
         </div>
     </div>
 </template>
@@ -136,19 +142,16 @@ export default {
                 {id: 3, name: '王五', age: 17},
                 {id: 4, name: '黑豹', age: 20},
             ],
-            tableChecked: []
+            tableChecked: [],
+            orderBy: {
+                // true 代表开启排序，但不定升序降序
+                // ascend 代表升序
+                // descend 代表降序
+                age: 'ascend'
+            }
         }
     },
     methods: {
-        // selectedRow(obj) {
-        //     let {selected, item, index} = obj
-        //     if(selected) {
-        //         this.tableChecked.push(item)
-        //     } else {
-        //         let index = this.tableChecked.indexOf(item)
-        //         this.tableChecked.splice(index, 1)
-        //     }
-        // },
         onInput() {
             let validator = new Validator()
             // console.log(validator)
