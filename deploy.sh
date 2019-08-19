@@ -11,7 +11,7 @@ destDir="docs/.vuepress/dist"
 currTime1=`date +%Y-%m-%d`
 currTime2=`date +%H:%M:%S`
 commit=":rocket: deploy @${currTime1} ${currTime2}"
-repo="https://github.com/wencaizhang/ActionVue.git"
+repo="https://github.com/fengqijie/meiyi.git"
 remoteBranch="gh-pages"
 
 # 进入生成的文件夹

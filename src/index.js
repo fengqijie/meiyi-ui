@@ -1,5 +1,5 @@
 import Button from './components/button'
-import Icon from './components/icon'
+import Icon from './components/icon/icon'
 import Pagination from './components/pagination'
 import Input from './components/input'
 import Row from './components/row'

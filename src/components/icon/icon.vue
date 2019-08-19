@@ -6,7 +6,10 @@
 
 <script>
 export default {
-    props: ['name']
+    props: ['name'],
+    mounted () {
+        import("./iconFont")
+    },
 }
 </script>
 

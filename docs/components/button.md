@@ -2,14 +2,28 @@
 
 ## 基本用法
 
-<button-demo1 />
-<Common-Democode title="" description="按钮有四种类型：主按钮、次按钮、虚线按钮、危险按钮。主按钮在同一个操作区域最多出现一次。">
+<Common-Democode title="" description="常用的按钮">
   <button-demo1 />
   <highlight-code slot="codeText" lang="vue">
     <template>
         <div>
-            <m-button>按钮</m-button>
-            <m-input></m-input>
+            <m-button>默认按钮</m-button>
+            <m-button type="primary">Primary</m-button>
+            <m-button type="plain">朴素按钮</m-button>
+        </div>
+    </template>
+  </highlight-code>
+</Common-Democode>
+
+## 图标按钮
+
+<Common-Democode title="" description="带图标的按钮">
+  <button-demo2 />
+  <highlight-code slot="codeText" lang="vue">
+    <template>
+        <div>
+            <m-button icon="search" icon-position="right">查询</m-button>
+            <m-button icon="search">查询</m-button>
         </div>
     </template>
   </highlight-code>
