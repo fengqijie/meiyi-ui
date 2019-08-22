@@ -2,6 +2,7 @@
     <div class="m-input" :class="{error}">
         <input 
             type="text" 
+            :placeholder="placeholder"
             :value="value" 
             :disabled="disabled" 
             :readonly="readonly"
@@ -20,6 +21,9 @@
 export default {
     name: "m-input",
     props: {
+        placeholder: {
+            type: String
+        },
         value: {
             type: String
         },
@@ -55,7 +59,7 @@ export default {
                 border-color: red;
             }
             &:focus {
-                box-shadow: inset 0 1px 3px rgba(255,0,0,.5);
+                border-color: red;
             }
         }
         .error_text {
@@ -76,12 +80,32 @@ export default {
             border-color: @border-hover-color;
         }
         &:focus {
-            box-shadow: inset 0 1px 3px rgba(0,0,0,.5);
+            border-color: @blue;
         }
         &[disabled], &[readonly] {
-            border-color: #e8e8e8;
-            color: #ccc;
+            background-color: #f5f7fa;
+            border-color: @border-color;
+            color: #c0c4cc;
             cursor: not-allowed;
+        }
+        &::placeholder {
+            color: @placeholder-text-color;
+        }
+        &::-webkit-input-placeholder {
+            /* WebKit browsers 适配谷歌 */
+            color: @placeholder-text-color;
+        }
+        &:-moz-placeholder {
+            /* Mozilla Firefox 4 to 18 适配火狐 */
+            color: @placeholder-text-color;
+        }
+        &::-moz-placeholder {
+            /* Mozilla Firefox 19+ 适配火狐 */
+            color: @placeholder-text-color;
+        }
+        &:-ms-input-placeholder {
+            /* Internet Explorer 10+  适配ie*/
+            color: @placeholder-text-color;
         }
     }
 }
