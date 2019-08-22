@@ -91,6 +91,9 @@ export default {
         color: #fff;
         background-color: #409eff;
         border-color: #409eff;
+        .m-icon {
+            fill: #fff;
+        }
         &:hover {
             background: #66b1ff;
             border-color: #66b1ff;
@@ -110,12 +113,18 @@ export default {
             background: #409eff;
             border-color: #409eff;
             color: #fff;
+            .m-icon {
+                fill: #ffffff;
+            }
         }
         &:active {
             background: #3a8ee6;
             border-color: #3a8ee6;
             color: #fff;
             outline: none;
+            .m-icon {
+                fill: #ffffff;
+            }
         }
     }
 }

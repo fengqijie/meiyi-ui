@@ -27,8 +27,9 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/components/button',
+                    '/components/icon',
                 ]
-            },
+            }
         ]
     },
 }
