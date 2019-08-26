@@ -29,6 +29,7 @@ module.exports = {
                     '/components/button',
                     '/components/icon',
                     '/components/input',
+                    '/components/table',
                 ]
             }
         ]
