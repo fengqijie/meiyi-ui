@@ -1,5 +1,6 @@
 // import Button from '../../src/components/button'
 import meiyiUI from '../../src/index'
+import plugin from '../../src/plugin'
 import VueHighlightJS from 'vue-highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 
@@ -13,5 +14,6 @@ export default ({
 
     // Vue.component('m-button', Button)
     Vue.use(meiyiUI)
+    Vue.use(plugin)
     Vue.use(VueHighlightJS)
 }

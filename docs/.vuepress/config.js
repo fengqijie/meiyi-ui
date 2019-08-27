@@ -30,6 +30,7 @@ module.exports = {
                     '/components/icon',
                     '/components/input',
                     '/components/table',
+                    '/components/toast',
                 ]
             }
         ]

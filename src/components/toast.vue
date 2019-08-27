@@ -46,15 +46,6 @@ export default {
         }
     },
     mounted() {
-        teacheringDetails:  [
-            {
-                nation: "汉族",
-                number: 1000
-            }, {
-                nation: "哈萨克族",
-                number: 1000
-            },
-        ];
         this.execAutoClose();
     },
     methods: {
@@ -94,6 +85,7 @@ export default {
     font-size: 14px;
     // min-height: 40px;
     line-height: 1.8;
+    z-index: 21;
     &.position-top {
         top: 0;
         transform: translate(-50%);
