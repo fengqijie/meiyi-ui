@@ -46,7 +46,6 @@ export default {
 .slide-leave {
     transform: translateX(-100%);
 }
-.m-carousel-item {}
 </style>
 
 

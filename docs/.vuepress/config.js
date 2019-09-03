@@ -31,6 +31,7 @@ module.exports = {
                     '/components/input',
                     '/components/table',
                     '/components/toast',
+                    '/components/carousel',
                 ]
             }
         ]
