@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../assets/css/var.less';
+@import '../../assets/css/var.less';
 .m_collapse_item {
     .title {
         border: 1px solid @border-color;

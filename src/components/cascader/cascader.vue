@@ -11,7 +11,7 @@
 
 <script>
 import CascaderItem from './cascader-item'
-import { clickOutside } from '../utils/index'
+import { clickOutside } from '../../utils/index'
 export default {
     name: 'Mcascader',
     components: { CascaderItem },
@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '../assets/css/var.less';
+@import '../../assets/css/var.less';
 .cascader {
     position: relative;
     .trigger {
