@@ -76,6 +76,7 @@ export default {
         background: #fff;
         border: 1px solid @border-color;
         margin-top: 3px;
+        z-index: 1;
     }
 }
 </style>

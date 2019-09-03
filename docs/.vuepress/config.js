@@ -32,6 +32,7 @@ module.exports = {
                     '/components/table',
                     '/components/toast',
                     '/components/carousel',
+                    '/components/cascader',
                 ]
             }
         ]
